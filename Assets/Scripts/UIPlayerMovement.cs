@@ -17,6 +17,9 @@ public class UIPlayerMovement : MonoBehaviour
 
     private Vector3 targetPosition; // Current target position of the player
 
+    // Reference to the InteractionButton UI element
+    private GameObject interactableButton;
+
     private void Awake()
     {
         // Initialize the player's starting position
@@ -32,11 +35,26 @@ public class UIPlayerMovement : MonoBehaviour
             return;
         }
 
+
+        // find the interactionButton
+        interactableButton = GameObject.Find("InteractionButton");
+
+        // check if there is an interactable button active
+        if (interactableButton != null)
+        {
+            // set the interactable button to inactive
+            interactableButton.gameObject.SetActive(false);
+        }
+
+        // rotate the player's y axis to 180 degrees
+        player.transform.rotation = Quaternion.Euler(0, 180, 0);
+
         // Update the target position to move left
         targetPosition += Vector3.left * moveDistance;
 
         // Start the smooth movement coroutine
         StartCoroutine(SmoothMove());
+
     }
 
     public void OnRightArrowPress()
@@ -47,6 +65,21 @@ public class UIPlayerMovement : MonoBehaviour
             rightArrowButton.interactable = false;
             return;
         }
+
+
+        // find the interactionButton
+        interactableButton = GameObject.Find("InteractionButton");
+
+        // check if there is an interactable button active
+        if (interactableButton != null)
+        {
+            // set the interactable button to inactive
+            interactableButton.gameObject.SetActive(false);
+        }
+
+
+        // rotate the player's y axis to 0 degrees
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         // Update the target position to move right
         targetPosition += Vector3.right * moveDistance;

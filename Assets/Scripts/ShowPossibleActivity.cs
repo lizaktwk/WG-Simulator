@@ -12,8 +12,13 @@ public class InteractableButton : MonoBehaviour
     // Reference to the ExecuteActivity script
     [SerializeField] private ExecuteActivity executeActivity;
 
+    private Vector3 storedClickPos; // Position of the click
+
     public void placeButton(Vector3 clickPosition)
     {
+        // Store the click position
+        storedClickPos = clickPosition;
+
         // Activate the button
         button.gameObject.SetActive(true);
 
@@ -53,8 +58,10 @@ public class InteractableButton : MonoBehaviour
     {
         if (executeActivity != null)
         {
+            // Deactivate the button
+            button.gameObject.SetActive(false);
             // Pass the button text to ExecuteActivity when the button is clicked
-            executeActivity.OnButtonPress(buttonText);
+            executeActivity.OnButtonPress(buttonText, energyCost, storedClickPos);
         }
     }
 }

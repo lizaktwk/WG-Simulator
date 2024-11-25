@@ -14,6 +14,9 @@ public class SliderColorDynamic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // get the initial value of the slider and set the color of the fill image
+        fillImage.color = Color.Lerp(Color.red, Color.green, slider.value / 100);
+
         //Adds a listener to the main slider and invokes a method when the value changes.
         slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         
@@ -22,7 +25,6 @@ public class SliderColorDynamic : MonoBehaviour
     // Invoked when the value of the slider changes.
     public void ValueChangeCheck()
     {
-        Debug.Log(slider.value);
         fillImage.color = Color.Lerp(Color.red, Color.green, slider.value / 100);
     }
 }

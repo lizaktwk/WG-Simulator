@@ -17,8 +17,6 @@ public class InteractableObject : MonoBehaviour, IPointerClickHandler
         // Get the mouse click position
         Vector3 clickPosition = eventData.position;
 
-        Debug.Log(gameObject.name + " clicked at screen position: " + clickPosition);
-
         // Convert the mouse click position to world space
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(clickPosition);
 
