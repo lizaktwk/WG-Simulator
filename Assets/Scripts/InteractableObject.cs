@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 [RequireComponent(typeof(InteractableButton))]
 public class InteractableObject : MonoBehaviour, IPointerClickHandler
 {
-    private InteractableButton interactableButton; // Reference to the InteractableButton script
+    private InteractableButton interactableButton; // Reference to the ShowPossibleActivity script
+    
 
     private void Awake()
     {
@@ -20,7 +22,13 @@ public class InteractableObject : MonoBehaviour, IPointerClickHandler
         // Convert the mouse click position to world space
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(clickPosition);
 
-        // Call the placeButton method from the InteractableButton script
+        // Call the placeButton method from the ShowPossibleActivity script
         interactableButton.placeButton(worldPosition);
+
+        // Move the player to the clicked position. Therefore, call the MovePlayerTo method from the PlayerFollowToInteractable script
+        FindObjectOfType<PlayerFollowToInteractable>().MovePlayerTo(worldPosition);
+
+
     }
+
 }

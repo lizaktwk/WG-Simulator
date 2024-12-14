@@ -13,7 +13,8 @@ public class HappinessImpact : MonoBehaviour
         { "Schlafen", 220 },
         { "Cooking", 2 },
         { "Gaming", 1 },
-        { "Sleeping", 4 }
+        { "Sleeping", 4 },
+        { "Kaffee trinken", 0 } // its an activity with a flatmate. So the happiness impact is handled by the StatsImpact script
     };
 
     // an array of strings to store the executed activities of the day
@@ -25,8 +26,6 @@ public class HappinessImpact : MonoBehaviour
     // variable to store the remaining energy value
     private float remainingHappiness;
 
-    // variable to say if the activity has a positive or negative impact on the happiness
-    private bool isPositive;
 
 
     public void getActivities(List<string> activities)
@@ -51,7 +50,6 @@ public class HappinessImpact : MonoBehaviour
             
             if (count == 1)
             {
-                isPositive = true;
                 currentHappiness += lernenValue;
                 // Update the happiness slider value over time
                 StartCoroutine(UpdateHappinessSlider(currentHappiness));
@@ -61,7 +59,6 @@ public class HappinessImpact : MonoBehaviour
 
            else if(count == 2)
             {
-                isPositive = true;
                 currentHappiness += lernenValue-10;
                 // Update the happiness slider value over time
                 StartCoroutine(UpdateHappinessSlider(currentHappiness));
@@ -71,7 +68,6 @@ public class HappinessImpact : MonoBehaviour
 
             else if (count == 3)
             {
-                isPositive = true;
                 currentHappiness += lernenValue - 15;
                 // Update the happiness slider value over time
                 StartCoroutine(UpdateHappinessSlider(currentHappiness));
@@ -89,10 +85,34 @@ public class HappinessImpact : MonoBehaviour
             }
 
         }
+
+
+        if (activities.Last() == "Schlafen")
+        {
+            int schlafenValue = defaultValues["Schlafen"];
+            // count the amount of "Lernen" activities
+            //int count = activities.FindAll(x => x == "Schlafen").Count;
+
+            currentHappiness += schlafenValue;
+            // Update the happiness slider value over time
+            StartCoroutine(UpdateHappinessSlider(currentHappiness));
+            // store the remaining energy value
+            remainingHappiness = currentHappiness;
+
+            //if (count == 1)
+            //{
+                
+            //}
+        }
+
+
         else
         {
-            Debug.Log("Lernen macht nicht glücklich");
+            
         }
+        Debug.Log("Happinessimpact script was called");
+        // Store the remaining happiness value by sending it to the StatsManager script
+        //StatsManager.happinessValue = (int)remainingHappiness;
     }
 
     // Coroutine to update the happiness slider value over time

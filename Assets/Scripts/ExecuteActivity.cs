@@ -10,22 +10,11 @@ public class ExecuteActivity : MonoBehaviour
     // Reference to the execution slider of the activity
     public Slider executionAnim;
     
-    // Reference to the InteractableButton script
-    private InteractableButton interactableButton;
     // variable to store the remaining energy value
     private float remainingEnergy;
+   
 
-    // Reference to ActivityLog (non-MonoBehaviour)
-    private ActivityLog activityLog = new ActivityLog();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Get the InteractableButton script attached to the GameObject
-        interactableButton = GetComponent<InteractableButton>();
-    }
-
-    // This method will be called when the button is clicked
+    // This method will be called when the activity button is clicked
     public void OnButtonPress(string buttonText, string energyCost, Vector3 clickPos)
     {
         // get the current energy value from the slider
@@ -43,7 +32,7 @@ public class ExecuteActivity : MonoBehaviour
             // Update the executionAnim slider value over time, as long as the energy slider takes to update
             StartCoroutine(ExecutionAnim());
 
-            currentEnergy -= float.Parse(energyCost);
+            currentEnergy += float.Parse(energyCost);
             // Update the energy slider value over time
             StartCoroutine(UpdateEnergySlider(currentEnergy));
             // store the remaining energy value
@@ -67,8 +56,24 @@ public class ExecuteActivity : MonoBehaviour
             remainingEnergy = currentEnergy;
         }
 
+        else if (buttonText == "Sprechen")
+        {
+            // start the conversation with the NPC in the ConversationInitialize script
+            GameObject.Find("Anna").GetComponent<ConversationInitialize>().startConversation();
+        }
+
+        else if (buttonText == "Kaffee trinken")
+        {
+            GameObject.Find("Anna").GetComponent<InitiateStoryActivity>().OnStoryActivityPress();
+        }
+       
+
         // send the executed activity to the ActivityLog
-        activityLog.AddActivity(buttonText);
+        ActivityLog.GetInstance().AddActivity(buttonText);
+
+        // keep the energy value consistent across all scenes
+        StatsManager.energyValue = (int)remainingEnergy;
+
 
     }
 
@@ -97,6 +102,9 @@ public class ExecuteActivity : MonoBehaviour
 
         // Ensure the slider value is set to the target value
         energySlider.value = targetValue;
+        remainingEnergy = targetValue;
+
+        
     }
 
     IEnumerator ExecutionAnim()
