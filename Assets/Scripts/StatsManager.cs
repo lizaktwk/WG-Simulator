@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class StatsManager: MonoBehaviour
 {
-    // This class is used to store and set the values of the stats, so the values are consistent across all scenes
+    // This class is used to store the values of the stats, so the values are consistent across all scenes
 
     // Stats values to keep
-    public static int energyValue;
-    public static int happinessValue;
+    public static int energyValue = 450;
+    public static int happinessValue = 120;
 
-    public static int knowledgeValue;
-    public static int communicationValue;
-    public static int conflictresolvingValue;
-    public static int householdingValue;
+    public static int knowledgeValue = 30;
+    public static int communicationValue = 30;
+    public static int conflictresolvingValue = 30;
+    public static int householdingValue = 30;
 
-    public static int relationshipAnna;
+    public static int relationshipAnna = 30;
 
+    public static bool willHaveCoffee = false;
+    
     public static StatsManager Instance;
+
 
     private void Awake()
     {

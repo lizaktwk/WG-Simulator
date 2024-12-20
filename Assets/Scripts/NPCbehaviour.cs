@@ -19,7 +19,7 @@ public class NPCbehaviour : MonoBehaviour
         Renderer[] renderers = npc.GetComponentsInChildren<Renderer>();
 
         //wait for 2 seconds before fading out
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
         // loop through the alpha value of the NPC sprite and decrease it gradually
         for (float alpha = 1; alpha >= 0; alpha -= 0.01f)

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UpdateStats : MonoBehaviour
 {
+    // this script is used to keep the stats updated across all scenes. So it updates the scenes only when a new scene is loaded
+
     [SerializeField] private Slider energy;
     [SerializeField] private Slider happiness;
 

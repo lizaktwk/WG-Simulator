@@ -13,6 +13,8 @@ TagManager:
   - relationship
   - energy
   - relationshipAnna
+  - relationshipNoah
+  - Anna
   layers:
   - Default
   - TransparentFX

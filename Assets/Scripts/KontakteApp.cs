@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class KontakteApp : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class KontakteApp : MonoBehaviour
     // reference to the game objects that should be set to active when a specific contact is being pressed
     [SerializeField] private GameObject anna;
 
+    [SerializeField] private TextMeshProUGUI clock;
 
     public void OnKontaktePress()
     {
@@ -19,15 +21,21 @@ public class KontakteApp : MonoBehaviour
         // set anna to inactive
         anna.SetActive(false);
 
+        // change the text color of the clock to black
+        clock.color = Color.black;
+
+
     }
 
     public void OpenProfileAnna()
     {
         anna.SetActive(true);
+        clock.color = Color.white;
     }
 
     public void CloseProfile()
     {
         anna.SetActive(false);
+        clock.color = Color.black;
     }
 }

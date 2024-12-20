@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &490885209439209283
+--- !u!1 &2138082637101162434
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5859784321954533042}
-  - component: {fileID: 2593440739189850047}
+  - component: {fileID: 5267013310103742820}
+  - component: {fileID: 6729478529778686768}
+  - component: {fileID: 218071956443480452}
   m_Layer: 0
   m_Name: UI Manager Phone
   m_TagString: Untagged
@@ -17,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5859784321954533042
+--- !u!4 &5267013310103742820
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490885209439209283}
+  m_GameObject: {fileID: 2138082637101162434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 704.7581, y: 1278.2266, z: 2.5755303}
@@ -32,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2593440739189850047
+--- !u!114 &6729478529778686768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490885209439209283}
+  m_GameObject: {fileID: 2138082637101162434}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af0cc4fe852d11b4fbc54784710b7a8f, type: 3}
@@ -46,3 +47,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kontakteApp: {fileID: 0}
   anna: {fileID: 0}
+  clock: {fileID: 0}
+--- !u!114 &218071956443480452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138082637101162434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5093a6c3d8ac2794cac5b728c89bb1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 0}
+  phoneIcon: {fileID: 0}
+  objectsToHide:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  profilApp: {fileID: 0}
+  todoApp: {fileID: 0}

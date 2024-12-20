@@ -25,6 +25,9 @@ public class InitiateStoryActivity : MonoBehaviour
     // reference to the back to game button
     [SerializeField] private GameObject backToGameButton;
 
+    // reference to the person that shall be set to inactive after pressing the return to game button
+    [SerializeField] private GameObject person;
+
     public void OnStoryActivityPress()
     {
         // Set the story activity to active
@@ -55,6 +58,9 @@ public class InitiateStoryActivity : MonoBehaviour
     public void BackToGame()
     {
         storyActivity.SetActive(false);
+        // Disable the ShowActivity script attached to the person
+        person.GetComponent<ShowActivity>().enabled = false;
+        SpawnManager.willHaveCoffee = false;
     }
 
     IEnumerator FadeInStoryActivity()
@@ -73,9 +79,9 @@ public class InitiateStoryActivity : MonoBehaviour
         // Set the image and description text to active every 2 seconds
         yield return new WaitForSeconds(1);
         storyActivityImage.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         descriptionText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         continueButton.SetActive(true);
     }
     

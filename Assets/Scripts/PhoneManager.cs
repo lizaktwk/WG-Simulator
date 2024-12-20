@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PhoneManager : MonoBehaviour
 {
     [SerializeField] private GameObject phone; // Reference to the phone object
+
+    [SerializeField] private GameObject phoneIcon; // Reference to the phone icon
 
     // array of game objects that shall be set to inactive when the phone is active
     [SerializeField] private GameObject[] objectsToHide;
@@ -30,6 +33,7 @@ public class PhoneManager : MonoBehaviour
         // find the phone's child with the name "Homescreen" and set it to active
         phone.transform.Find("Homescreen").gameObject.SetActive(true);
         phone.transform.Find("CloseButton").gameObject.SetActive(true);
+        phone.transform.Find("Clock").gameObject.SetActive(true);
 
         // loop through the array of objects to hide and set them to inactive
         foreach (GameObject obj in objectsToHide)
@@ -58,6 +62,7 @@ public class PhoneManager : MonoBehaviour
 
     public void OnProfilButtonPress()
     {
+        Debug.Log("Profile button pressed");
         // set the profile app to active
         profilApp.SetActive(true);
     }
@@ -75,6 +80,37 @@ public class PhoneManager : MonoBehaviour
         foreach (GameObject app in apps)
         {
             app.SetActive(false);
+        }
+
+        // make sure the clocks color is white
+        phone.transform.Find("Clock").gameObject.GetComponent<TextMeshProUGUI>().color = Color.white;
+    }
+
+    public void OnStatsChanged()
+    {
+        // make the phone icon blink
+        StartCoroutine(BlinkPhoneIcon());
+
+    }
+
+    private IEnumerator BlinkPhoneIcon()
+    {
+        // loop 5 times
+        for (int i = 0; i < 5; i++)
+        {
+
+            yield return new WaitForSeconds(0.5f);
+            // set the color of the phoneIcon to #00fff0
+            phoneIcon.GetComponent<Image>().color = new Color(0, 1, 0.9411765f);
+
+            // wait for 0.5 seconds
+            yield return new WaitForSeconds(0.5f);
+
+            // set the color of the phoneIcon to #FFCC00
+            phoneIcon.GetComponent<Image>().color = new Color(1, 0.8f, 0);
+
+            // wait for 0.5 seconds
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

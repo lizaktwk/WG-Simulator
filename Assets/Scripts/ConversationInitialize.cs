@@ -11,24 +11,6 @@ public class ConversationInitialize : MonoBehaviour
     // array of game objects that shall be set to inactive when having a conversation
     [SerializeField] private GameObject[] objectsToHide;
 
-
-    // Implement the OnPointerClick method from IPointerClickHandler
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    Debug.Log("Conversation started");
-    //    // Subscribe to the conversation end event
-    //    ConversationManager.OnConversationEnded += OnConversationEnded;
-
-    //    // Start the conversation
-    //    ConversationManager.Instance.StartConversation(myConversation);
-
-    //    // loop through the array of objects to hide and set them to inactive
-    //    foreach (GameObject obj in objectsToHide)
-    //    {
-    //        obj.SetActive(false);
-    //    }
-    //}
-
     public void startConversation()
     {
         Debug.Log("Conversation started");
@@ -52,7 +34,12 @@ public class ConversationInitialize : MonoBehaviour
         {
             obj.SetActive(true);
         }
-        
+
+        if (ConversationManager.Instance.GetBool("willHaveCoffee") == true)
+        {
+            SpawnManager.willHaveCoffee = true;
+        }
+
     }
 
     private void OnDestroy()
