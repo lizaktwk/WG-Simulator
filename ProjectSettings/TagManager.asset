@@ -15,6 +15,9 @@ TagManager:
   - relationshipAnna
   - relationshipNoah
   - Anna
+  - StoryPicture
+  - relationshipFelix
+  - relationshipAll
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,13 @@ public class ConversationInitialize : MonoBehaviour
 
     public void startConversation()
     {
+        // check if there is an active gameobject with the tag "StoryPicture" and set it to inactive
+        GameObject storyPicture = GameObject.FindGameObjectWithTag("StoryPicture");
+        if (storyPicture != null)
+        {
+            storyPicture.SetActive(false);
+        }
+
         Debug.Log("Conversation started");
         // Subscribe to the conversation end event
         ConversationManager.OnConversationEnded += OnConversationEnded;

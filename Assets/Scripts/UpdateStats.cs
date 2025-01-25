@@ -15,9 +15,10 @@ public class UpdateStats : MonoBehaviour
     [SerializeField] private Slider conflictSlider;
     [SerializeField] private Slider householdingSlider;
 
+    [SerializeField] private Slider relationshipNoah;
     [SerializeField] private Slider relationshipAnna;
+    [SerializeField] private Slider relationshipFelix;
 
-    // Start is called before the first frame update
     void Start()
     {
         int energyValue = StatsManager.energyValue;
@@ -38,8 +39,14 @@ public class UpdateStats : MonoBehaviour
         int householdingValue = StatsManager.householdingValue;
         householdingSlider.value = householdingValue;
 
-        int relationshipValue = StatsManager.relationshipAnna;
+        int relationshipNoahValue = StatsManager.relationshipNoah;
+        relationshipNoah.value = StatsManager.relationshipNoah;
+
+        int relationshipAnnaValue = StatsManager.relationshipAnna;
         relationshipAnna.value = StatsManager.relationshipAnna;
+
+        int relationshipFelixValue = StatsManager.relationshipFelix;
+        relationshipFelix.value = StatsManager.relationshipFelix;
         
     }
 

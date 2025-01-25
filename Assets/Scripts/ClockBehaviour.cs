@@ -12,7 +12,8 @@ public class ClockBehaviour : MonoBehaviour
         {"Schlafen", 8.0f},
         {"Lernen", 2.0f},
         {"Sprechen", 0.2f},
-        {"Kaffee trinken", 0.5f}
+        {"Kaffee trinken", 0.5f},
+        {"Filmabend", 2.0f }
     };
 
     void Start()

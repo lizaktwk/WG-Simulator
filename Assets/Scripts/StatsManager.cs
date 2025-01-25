@@ -15,7 +15,9 @@ public class StatsManager: MonoBehaviour
     public static int conflictresolvingValue = 30;
     public static int householdingValue = 30;
 
+    public static int relationshipNoah = 30;
     public static int relationshipAnna = 30;
+    public static int relationshipFelix = 30;
 
     public static bool willHaveCoffee = false;
     

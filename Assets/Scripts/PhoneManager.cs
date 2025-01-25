@@ -75,6 +75,8 @@ public class PhoneManager : MonoBehaviour
 
     public void OnHomeButtonPress()
     {
+        GameObject clock = GameObject.Find("Clock");
+
         // set all game objects with the tag "app" to inactive
         GameObject[] apps = GameObject.FindGameObjectsWithTag("app");
         foreach (GameObject app in apps)
@@ -82,8 +84,10 @@ public class PhoneManager : MonoBehaviour
             app.SetActive(false);
         }
 
+        // make sure the clock is set to active
+        clock.SetActive(true);
         // make sure the clocks color is white
-        phone.transform.Find("Clock").gameObject.GetComponent<TextMeshProUGUI>().color = Color.white;
+        clock.GetComponent<TextMeshProUGUI>().color = Color.white;
     }
 
     public void OnStatsChanged()

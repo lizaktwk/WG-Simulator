@@ -28,7 +28,7 @@ public class ExecuteActivity : MonoBehaviour
     // This method will be called when the activity button is clicked. It shall only call the executionAnim
     public void OnButtonPress(string buttonText, string energyCost, Vector3 clickPos)
     {
-        // get the current energy value from the slider by calling the StatsManager script
+        // get the current values from the sliders by calling the StatsManager script
         int energyValue = StatsManager.energyValue;
         int happinessValue = StatsManager.happinessValue;
         int knowledgeValue = StatsManager.knowledgeValue;
@@ -36,7 +36,6 @@ public class ExecuteActivity : MonoBehaviour
         int conflictValue = StatsManager.conflictresolvingValue;
         int householdingValue = StatsManager.householdingValue;
         int relationshipValue = StatsManager.relationshipAnna;
-
 
 
         // Do something based on the button text
@@ -84,15 +83,28 @@ public class ExecuteActivity : MonoBehaviour
         }
 
         else if (buttonText == "Sprechen")
-        {
+        {  
             // start the conversation with the NPC in the ConversationInitialize script
             GameObject.Find("Anna").GetComponent<ConversationInitialize>().startConversation();
+
+            energyValue += int.Parse(energyCost);
+            StartCoroutine(UpdateEnergySlider(energyValue));
+            // store the remaining energy value
+            remainingEnergy = energyValue;
         }
 
         else if (buttonText == "Kaffee trinken")
         {
             GameObject.Find("Anna").GetComponent<InitiateStoryActivity>().OnStoryActivityPress();
             energyValue += int.Parse(energyCost);
+            StartCoroutine(UpdateEnergySlider(energyValue));
+            remainingEnergy = energyValue;
+        }
+
+        else if (buttonText == "Filmabend")
+        {
+            GameObject.Find("Noah").GetComponent<InitiateStoryActivity>().OnStoryActivityPress();
+            energyValue += 0;
             StartCoroutine(UpdateEnergySlider(energyValue));
             remainingEnergy = energyValue;
         }
@@ -106,8 +118,6 @@ public class ExecuteActivity : MonoBehaviour
 
         // keep the energy value consistent across all scenes
         StatsManager.energyValue = (int)remainingEnergy;
-
-
     }
 
     // Coroutine to update the energy slider value over time

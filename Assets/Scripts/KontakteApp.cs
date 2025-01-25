@@ -9,7 +9,9 @@ public class KontakteApp : MonoBehaviour
     // reference to the game object that should be set to active when Kontakte is being pressed
     [SerializeField] private GameObject kontakteApp;
     // reference to the game objects that should be set to active when a specific contact is being pressed
+    [SerializeField] private GameObject noah;
     [SerializeField] private GameObject anna;
+    [SerializeField] private GameObject felix;
 
     [SerializeField] private TextMeshProUGUI clock;
 
@@ -26,6 +28,11 @@ public class KontakteApp : MonoBehaviour
 
 
     }
+    public void OpenProfileNoah()
+    {
+        noah.SetActive(true);
+        clock.color = Color.white;
+    }
 
     public void OpenProfileAnna()
     {
@@ -33,9 +40,17 @@ public class KontakteApp : MonoBehaviour
         clock.color = Color.white;
     }
 
+    public void OpenProfileFelix()
+    {
+        felix.SetActive(true);
+        clock.color = Color.white;
+    }
+
     public void CloseProfile()
     {
+        noah.SetActive(false);
         anna.SetActive(false);
+        felix.SetActive(false);
         clock.color = Color.black;
     }
 }

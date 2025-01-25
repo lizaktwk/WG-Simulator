@@ -39,14 +39,25 @@ public class StoryStatsImpact : MonoBehaviour
                         case "communication":
                             StatsManager.communicationValue += impactValue;
                             break;
-                        case "conflictResolvement":
+                        case "conflictresolvement":
                             StatsManager.conflictresolvingValue += impactValue;
                             break;
                         case "householding":
                             StatsManager.householdingValue += impactValue;
                             break;
+                        case "relationshipNoah":
+                            StatsManager.relationshipNoah += impactValue;
+                            break;
                         case "relationshipAnna":
                             StatsManager.relationshipAnna += impactValue;
+                            break;
+                        case "relationshipFelix":
+                            StatsManager.relationshipFelix += impactValue;
+                            break;
+                        case "relationshipAll":
+                            StatsManager.relationshipNoah += impactValue;
+                            StatsManager.relationshipAnna += impactValue;
+                            StatsManager.relationshipFelix += impactValue;
                             break;
                         default:
                             Debug.LogError($"Unhandled tag: {tag}");
@@ -86,8 +97,4 @@ public class StoryStatsImpact : MonoBehaviour
         }
     }
 
-    public void UpdateStatsImmediately()
-    {
-
-    }
 }

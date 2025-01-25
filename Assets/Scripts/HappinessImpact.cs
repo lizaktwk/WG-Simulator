@@ -14,7 +14,9 @@ public class HappinessImpact : MonoBehaviour
         { "Cooking", 2 },
         { "Gaming", 1 },
         { "Sleeping", 4 },
-        { "Kaffee trinken", 0 } // its a story activity with a flatmate. So the happiness impact is handled by the StoryStatsImpact script
+        { "Kaffee trinken", 0 }, // its a story activity with a flatmate. So the happiness impact is handled by the StoryStatsImpact script
+        { "Filmabend", 0 }, // its a story activity with a flatmate. So the happiness impact is handled by the StoryStatsImpact script
+        { "Sprechen", 0 }
     };
 
     // an array of strings to store the executed activities of the day
@@ -116,8 +118,17 @@ public class HappinessImpact : MonoBehaviour
             StartCoroutine(UpdateHappinessSlider(currentHappiness));
             // store the remaining energy value
             remainingHappiness = currentHappiness;
+        }
 
+        if (activities.Last() == "Sprechen")
+        {
+            int sprechenValue = defaultValues["Sprechen"];
 
+            currentHappiness += sprechenValue;
+            // Update the happiness slider value over time
+            StartCoroutine(UpdateHappinessSlider(currentHappiness));
+            // store the remaining energy value
+            remainingHappiness = currentHappiness;
         }
 
 
