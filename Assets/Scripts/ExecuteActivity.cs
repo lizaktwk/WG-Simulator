@@ -59,7 +59,7 @@ public class ExecuteActivity : MonoBehaviour
             remainingEnergy = energyValue;
 
             // handle the profile stats impact of the activity
-            StatsManager.knowledgeValue += 20;
+            StatsManager.knowledgeValue += 10;
             knowledgeSlider.value = StatsManager.knowledgeValue;
 
         }

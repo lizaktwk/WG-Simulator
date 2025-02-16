@@ -23,7 +23,7 @@ public class SpawnObject : MonoBehaviour
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
         // if the current scene is "Scene1" and the current time is less than 10 seconds
-        if (currentScene == "Corridor" && currentTime < 12.0f && currentTime > 7.5f)
+        if (currentScene == "Corridor" && currentTime < 13.0f && currentTime > 7.5f)
         {
             // in the array of game objects, get the tag of the game objects
             foreach (GameObject obj in objectsToSpawn)
