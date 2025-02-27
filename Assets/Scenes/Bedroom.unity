@@ -5065,7 +5065,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1777043197}
         m_TargetAssemblyTypeName: PhoneManager, Assembly-CSharp
         m_MethodName: OnPhoneIconPress
         m_Mode: 1
